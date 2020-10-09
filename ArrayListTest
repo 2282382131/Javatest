@@ -1,0 +1,18 @@
+package ArrayListTest;
+
+import java.util.ArrayList;
+
+public class demo01 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<String> list = new ArrayList<>();
+		list.add("肖战");
+		System.out.println(list);
+		list.add("肖战1");
+		list.add("肖战2");
+		list.add("肖战3");
+		System.out.println(list);
+	}
+
+}
