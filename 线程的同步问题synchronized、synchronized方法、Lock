@@ -1,0 +1,58 @@
+
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class RunnableSynchronizedIpm implements Runnable{
+	private int ticket=100;
+	//Object obj=new Object();
+	Lock l=new ReentrantLock();
+	public void run() {
+		while(true) {
+//			synchronized(obj) {
+			l.lock();
+				if(ticket>0) {
+					System.out.println(Thread.currentThread().getName()+"-->在卖第"+ticket+"张票");
+					ticket--;
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}finally {
+						l.unlock();
+					}
+				}
+//			}
+			//payTickect();
+		}
+	}
+	
+//	public synchronized void payTickect() {
+//		if(ticket>0) {
+//			System.out.println(Thread.currentThread().getName()+"-->在卖第"+ticket+"张票");
+//			ticket--;
+//			try {
+//				Thread.sleep(100);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+//	}
+}
+
+
+public class ThreadSynchronizedDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		RunnableSynchronizedIpm r=new RunnableSynchronizedIpm();
+		Thread t1=new Thread(r);
+		Thread t2=new Thread(r);
+		Thread t3=new Thread(r);
+		t1.start();
+		t2.start();
+		t3.start();
+	}
+
+}
