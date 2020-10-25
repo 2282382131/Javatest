@@ -1,0 +1,64 @@
+public class Person {
+	private String name;
+	private int age;
+	public Person() {}
+	public Person(String name,int age) {
+		this.name=name;
+		this.age=age;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", age=" + age + "]";
+	}
+	
+}
+
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class PersonTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Person[] arr= {
+			new Person("小明",12),
+			new Person("小红",7),
+			new Person("小王",4)
+		};
+//		Arrays.sort(arr,new Comparator<Person>() {
+//
+//			@Override
+//			public int compare(Person o1, Person o2) {
+//				// TODO Auto-generated method stub
+//				return o1.getAge()-o2.getAge();
+//			}
+//			
+//		});
+		//lambda简化
+//		Arrays.sort(arr,(Person o1, Person o2)->{
+//			return o1.getAge()-o2.getAge();
+//		});
+		//再简化
+//		Arrays.sort(arr,(Person o1, Person o2)->o1.getAge()-o2.getAge());
+//		
+		//更加简化
+		Arrays.sort(arr,(o1, o2)->o1.getAge()-o2.getAge());
+		for(Person p:arr) {
+			System.out.println(p);
+		}
+	}
+
+}
