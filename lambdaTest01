@@ -1,0 +1,28 @@
+public interface Cook {
+	public abstract void makeFood();
+}
+
+public class LambdaDemo01 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//内部类实现
+		invokeCook(new Cook() {
+			public void makeFood() {
+				System.out.println("开吃了！");
+			}
+		});
+		//lambda表达式简化
+		invokeCook(
+			()->{System.out.println("我要开吃了！");}
+			);
+		
+		invokeCook(()->System.out.println("我吃饱了！"));
+		
+	}
+	
+  
+	public static void invokeCook(Cook cook) {
+		cook.makeFood();
+	}
+}
