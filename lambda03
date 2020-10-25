@@ -1,0 +1,27 @@
+public interface Calculator {
+	public abstract int Cal(int a,int b);
+}
+
+public class CalculatorTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		invokeCal(10,20,new Calculator() {
+
+			@Override
+			public int Cal(int a, int b) {
+				// TODO Auto-generated method stub
+				return a+b;
+			}
+			
+		});
+		//lambda表达式
+		invokeCal(100,200,(int a,int b)->{return a+b;});
+		//简化
+		invokeCal(1000,2000,(a, b)->a+b);
+	}
+	public static void invokeCal(int a,int b,Calculator c) {
+		int sum=c.Cal(a, b);
+		System.out.println(sum);
+	}
+}
